@@ -2,11 +2,14 @@ package com.ewa.pokemon.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "Status")
+@Table(name = "States")
 public class Status {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(nullable = false)
+    private String state;
 }

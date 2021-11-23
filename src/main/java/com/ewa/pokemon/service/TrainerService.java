@@ -28,7 +28,7 @@ public class TrainerService {
         return trainerRepo.save(trainer);
     }
 
-    public void deleteUser(Long id){
+    public void deleteTrainer(Long id){
         trainerRepo.deleteTrainerById(id);
     }
 }
