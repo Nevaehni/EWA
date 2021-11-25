@@ -4,25 +4,25 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 
-@Entity(name = "TrainerPokemon")
-@Table(name = "trainer_pokemon")
-public class TrainerPokemon {
+@Entity(name = "UserPokemon")
+@Table(name = "user_pokemon")
+public class UserPokemon {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(targetEntity = Trainer.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JsonBackReference
-    @JoinColumn(name = "trainer_id")
-    private Trainer trainer;
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @ManyToOne(targetEntity = Trainer.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JsonBackReference
     @JoinColumn(name = "pokemon_id")
     private Pokemon pokemon;
 
-    @OneToOne(targetEntity = Trainer.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JsonBackReference
     @JoinColumn(name = "status_id")
     private Status status;

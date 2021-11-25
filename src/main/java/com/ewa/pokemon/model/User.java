@@ -1,17 +1,13 @@
 package com.ewa.pokemon.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "Trainer")
-@Table(name = "trainer")
-public class Trainer implements Serializable {
+@Entity(name = "User")
+@Table(name = "user")
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
@@ -23,13 +19,13 @@ public class Trainer implements Serializable {
     @Column(nullable = false)
     private String nickname;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String country;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String gender;
 
     @Column(nullable = false)
@@ -44,23 +40,23 @@ public class Trainer implements Serializable {
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true,
-            mappedBy = "trainer",
+            mappedBy = "user",
             fetch = FetchType.EAGER
     )
-    private List<TrainerPokemon> pokemons = new ArrayList<>();;
+    private List<UserPokemon> pokemons = new ArrayList<>();;
 
-    public Trainer() {}
+    public User() {}
 
-    public Trainer(String name, String nickname, String email, String country, String gender, String password, int gold, int rank, List<TrainerPokemon> pokemons) {
+    public User(String name, String nickname, String email, String country, String gender, String password) {
         this.name = name;
         this.nickname = nickname;
         this.email = email;
         this.country = country;
         this.gender = gender;
         this.password = password;
-        this.gold = gold;
-        this.rank = rank;
-        this.pokemons = pokemons;
+        this.gold = 250;
+        this.rank = 1;
+        this.pokemons = null;
     }
 
     public Long getId() {
@@ -135,11 +131,11 @@ public class Trainer implements Serializable {
         this.rank = rank;
     }
 
-    public List<TrainerPokemon> getPokemons() {
+    public List<UserPokemon> getPokemons() {
         return pokemons;
     }
 
-    public void setPokemons(List<TrainerPokemon> pokemons) {
+    public void setPokemons(List<UserPokemon> pokemons) {
         this.pokemons = pokemons;
     }
 }
