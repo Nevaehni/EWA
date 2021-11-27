@@ -7,12 +7,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PokemonRepo extends JpaRepository<Pokemon, Long> {
-    Pokemon findPokemonById(Long id);
+public interface PokemonRepo extends JpaRepository<Pokemon, Integer> {
+    Pokemon findPokemonById(Integer id);
 
     List<Pokemon> findAll();
 
     Pokemon save(Pokemon pokemon);
 
-    void deletePokemonById(Long id);
+    void deletePokemonById(Integer id);
 }

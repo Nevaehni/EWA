@@ -1,5 +1,7 @@
 package com.ewa.pokemon.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
-    private Long id;
+    private int id;
 
     @Column(nullable = false)
     private String name;
@@ -43,9 +45,8 @@ public class User implements Serializable {
             mappedBy = "user",
             fetch = FetchType.EAGER
     )
-    private List<UserPokemon> pokemons = new ArrayList<>();;
-
-    public User() {}
+    @JsonIgnore
+    private List<UserPokemon> pokemons = new ArrayList<>();
 
     public User(String name, String nickname, String email, String country, String gender, String password) {
         this.name = name;
@@ -59,11 +60,15 @@ public class User implements Serializable {
         this.pokemons = null;
     }
 
-    public Long getId() {
+    public User() {
+
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -139,3 +144,4 @@ public class User implements Serializable {
         this.pokemons = pokemons;
     }
 }
+

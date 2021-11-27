@@ -9,7 +9,7 @@ public class Pokemon implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
-    private Long id;
+    private int id;
 
     @Column(nullable = false)
     private String name;
@@ -42,11 +42,11 @@ public class Pokemon implements Serializable {
 
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

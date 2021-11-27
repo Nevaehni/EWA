@@ -8,7 +8,7 @@ public class Status {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private int id;
 
     @Column(nullable = false)
     private String state;
